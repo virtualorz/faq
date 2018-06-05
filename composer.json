@@ -8,7 +8,7 @@
     ],
     "require": {
         "virtualorz/fileupload": "^1.0.1",
-        "virtualorz/cate": "^1.0.7"
+        "virtualorz/cate": "^1.0.9"
     },
     "autoload": {
         "psr-4": {
