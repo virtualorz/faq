@@ -27,9 +27,11 @@ class Faq
                 'faq.created_at',
                 'faq.title',
                 'faq.answer',
+                'faq.enable',
                 'cate.name as cate_name'
             ])
             ->leftJoin('cate','faq.cate_id','=','cate.id')
+            ->whereNull('faq.delete')
             ->orderBy('faq.order');
         if($page !== 0)
         {
