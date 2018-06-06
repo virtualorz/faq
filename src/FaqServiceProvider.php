@@ -24,6 +24,8 @@ class FaqServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('faq', function () {
+            return new Faq();
+        });
     }
 }
