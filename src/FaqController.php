@@ -8,12 +8,11 @@ use Virtualorz\Fileupload\Fileupload;
 use App\Exceptions\ValidateException;
 use PDOException;
 use Exception;
-use Virtualorz\Faq\Pagination;
+use Pagination;
 use Config;
 
 class Faq
 {
-    use Pagination;
     public function list($page = 0) {
 
         $page_display = intval(Request::input('page_display', 10));
@@ -43,9 +42,9 @@ class Faq
                 ->cloneWithoutBindings(['select', 'order'])
                 ->count();
             
-        $pagination = $this->getPagination($dataCount, $page_display);
+        Pagination::setPagination(['total'=>$dataCount]);
 
-        return [$dataSet,$pagination,$page_display];
+        return $dataSet;
     }
 
     public function add()

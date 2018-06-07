@@ -12,6 +12,7 @@ composer require virtualorz/faq
     Virtualorz\Fileupload\FileuploadServiceProvider::class,
     Virtualorz\Cate\CateServiceProvider::class,
     Virtualorz\Faq\FaqServiceProvider::class,
+    Virtualorz\Pagination\PaginationServiceProvider::class,
     ...
 ]
 
@@ -20,6 +21,7 @@ composer require virtualorz/faq
     'Fileupload' => Virtualorz\Fileupload\FileuploadFacade::class,
     'Cate' => Virtualorz\Cate\CateFacade::class,
     'Faq' => Virtualorz\Faq\FaqFacade::class,
+    'Pagination' => Virtualorz\Pagination\PaginationFacade::class,
     ...
 ]
 </code></pre>
@@ -32,10 +34,10 @@ php artisan migrate
 # usage #
 #### 1. get cate list data ####
 <pre><code>
-$dataArray = Faq::list('use type');
+$dataSet = Faq::list('use type');
 </code></pre>
 use type : eg. news, member , product ...etc, different type in your application
-$dataArray : return array in two elements : [$dataArry,pagination elements,page item]
+$dataSet : return date
 
 #### 2. add data to cate ####
 <pre><code>
