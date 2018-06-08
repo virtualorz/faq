@@ -38,6 +38,22 @@ class Faq
                 ->limit($page_display);
         }
         $dataSet = $qb->get();
+
+        //多語言處理
+        foreach($dataSet as $k=>$v)
+        {
+            $dataSet_lang = DB::table('faq_lang')
+                ->select([
+                    'faq_lang.lang',
+                    'faq_lang.created_at',
+                    'faq_lang.title',
+                    'faq_lang.answer'
+                ])
+                ->where('faq_lang.faq_id',$v->id)
+                ->get()
+                ->keyBy('lang');
+            $dataSet[$k]->lang = $dataSet_lang;
+        }
         $dataCount = $qb->cloneWithout(['columns', 'orders', 'limit', 'offset'])
                 ->cloneWithoutBindings(['select', 'order'])
                 ->count();
